@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ================================================================
+  GUIA RÁPIDO (leia primeiro)
+
+  Arquivos desta pasta (mantenha os três juntos, na mesma pasta):
+    index.html  -> o conteúdo e os textos da página (este arquivo)
+    style.css   -> cores, fontes, tamanhos e formatos
+    foto.jpg    -> a foto que aparece no topo da página
+
+  Para ver a página: abra o index.html no navegador, ou use a extensão
+  "Live Server" no VS Code (botão direito no arquivo > Open with Live Server).
+
+  Dica: procure por "EDITAR:" (Ctrl+F) para achar tudo que precisa ser
+  trocado por dados reais.
+================================================================== -->
+
+<!-- EDITAR: título que aparece na aba do navegador -->
+<title>Geyslane Silva do Nascimento · Psicóloga</title>
+
+<!-- EDITAR: texto que aparece nos resultados do Google -->
+<meta name="description" content="Psicóloga clínica. Atendimento individual online.">
+
+<!-- Fonte Montserrat (Google Fonts). Precisa de internet para carregar.
+     Para trocar de fonte: mude o nome aqui E as variáveis --serif e --sans no style.css -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Liga o arquivo de estilos -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== TOPO / MENU =====
+       Os links usam "#" + id da seção (ex.: #sobre leva até <section id="sobre">).
+       Se renomear um id lá embaixo, troque o link aqui também. -->
+  <header class="top">
+    <a class="brand" href="#inicio">Geyslane Silva do Nascimento | CRP 21/07086</a>
+    <nav aria-label="Principal">
+      <a href="#sobre">Sobre</a><a href="#atendimento">Atendimento</a><a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===== APRESENTAÇÃO (primeira tela) ===== -->
+    <div class="hero">
+      <div>
+        <!-- A palavra dentro de <em> fica em itálico e na cor de destaque -->
+        <h1>Te ajudo a encontrar <em>pequenas luzes</em> enquanto caminhamos.</h1>
+        <p class="lead">Atendimento psicológico individual | adultos | online.</p>
+        <a class="btn" href="#contato">Agendar uma conversa</a>
+        <a class="btn ghost" href="#sobre">Conhecer meu trabalho</a>
+      </div>
+
+      <!-- FOTO: para trocar, substitua o arquivo foto.jpg por outro com o mesmo nome.
+           Se a nova foto tiver proporção diferente, ajuste "aspect-ratio" em .portrait no style.css.
+           O texto em "alt" descreve a foto para leitores de tela: mantenha-o. -->
+      <div class="portrait">
+        <img src="foto.jpg" alt="Retrato de Geyslane Silva do Nascimento, psicóloga" width="911" height="1194">
+      </div>
+    </div>
+
+    <!-- ===== SOBRE MIM ===== -->
+    <section id="sobre" class="about">
+      <div>
+        <h2>Sobre mim</h2>
+        <ul class="creds">
+          <!-- EDITAR: número real do CRP -->
+          <li>Psicóloga Clínica · CRP 21/07086</li>
+          <!-- EDITAR: nome da universidade (troque o texto entre colchetes) -->
+          <li>Terapia Cognitivo-Comportamental</li>
+          <li>Ansiedade e Depressão</li>
+        </ul>
+      </div>
+      <div>
+        <!-- Cada <p> é um parágrafo. Para adicionar outro, copie uma linha <p>...</p> -->
+        <p>Meu trabalho é pautado na escuta qualificada e na Terapia Cognitivo-Comportamental (TCC) com estudos voltados para ansiedade e depressão, considerando a singularidade, a história de vida e as necessidades de cada pessoa.</p>
+        <p>Minha escolha por essas áreas tem uma conexão profunda com a minha própria história. Ao longo da vida, enfrentei um período de depressão profunda e crises intensas de ansiedade. Vivenciar essas experiências me proporcionou um olhar mais sensível e humano sobre o sofrimento emocional, despertando em mim o desejo de compreender cada vez mais esses processos e de me aprofundar no conhecimento sobre saúde mental.</p>
+        <P>Hoje, levo essa compreensão para minha prática clínica, buscando oferecer um espaço de acolhimento, respeito e cuidado, no qual cada pessoa possa se sentir verdadeiramente ouvida e encontrar caminhos para lidar com suas emoções e construir uma relação mais saudável consigo mesma.</P>
+        <P>Acredito que ninguém precisa enfrentar suas dores e dificuldades sozinho. Com acolhimento, escuta e acompanhamento adequado, é possível desenvolver recursos emocionais, ressignificar experiências e construir novos caminhos para uma vida mais leve e consciente.</P>
+      </div>
+    </section>
+
+    <!-- ===== COM O QUE POSSO AJUDAR =====
+         Cada <article class="area"> é um cartão. Para adicionar um novo,
+         copie a linha inteira de um cartão e cole logo abaixo. Os cartões se
+         reorganizam sozinhos na tela. -->
+
+
+    <!-- ===== COMO FUNCIONA =====
+         Os números 1, 2, 3 são automáticos: se adicionar ou remover um <li>,
+         a numeração se ajusta sozinha. -->
+    <section id="atendimento">
+      <h2>Como funciona o atendimento</h2>
+      <ol class="steps">
+        <li><h3>Primeiro contato</h3><p>Você me envia uma mensagem, conversamos sobre o atendimento, esclarecemos suas dúvidas e combinamos um horário.</p></li>
+        <li><h3>Primeira sessão</h3><p>Nosso primeiro encontro é um momento para conhecer sua história, compreender suas necessidades e iniciar a construção do nosso processo terapêutico.</p></li>
+        <li><h3>Acompanhamento</h3><p>As sessões são semanais, com duração de 50 minutos, realizadas por videochamada.</p></li>
+      </ol>
+    </section>
+
+
+    <!-- ===== CONTATO ===== -->
+    <section id="contato">
+      <div class="contact">
+        <div>
+          <h2>Vamos conversar?</h2>
+          <p>Para mais informações entre em contato, será um prazer falar com você.</p>
+        </div>
+        <div>
+          <ul class="info">
+            <li><b>WhatsApp:</b> (86) 98112-5971</li>
+            <!-- EDITAR: e-mail real -->
+            <li><b>E-mail:</b> psi.geyslane@gmail.com</li>
+            <li><b>Atendimento:</b> 100% online.</li>
+          </ul>
+
+          <!-- BOTÃO DO WHATSAPP
+               O link segue o formato: https://wa.me/55 + DDD + número (só dígitos, sem espaços)
+               Se mudar o número, troque aqui E no texto "WhatsApp:" acima.
+               O trecho depois de "text=" é a mensagem que já aparece escrita para a pessoa
+               (espaços viram %20; acentos ficam codificados, ex.: Olá = Ol%C3%A1). -->
+          <a class="btn" href="https://wa.me/5586981125971?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20conversa." rel="noopener">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <!-- EDITAR: CRP real (e o ano, se necessário) -->
+    <div>© 2026 Geyslane Silva do Nascimento · Psicóloga · CRP 21/07086</div>
+  </footer>
+</div>
+</body>
+</html>
