@@ -1,139 +1,82 @@
-/* ================================================================
-   GUIA RÁPIDO
 
-   1) CORES E FONTES: ficam no bloco ":root" logo abaixo.
-      Mudando um valor ali, a cor muda em toda a página.
-   2) O site tem DOIS temas: claro (padrão) e escuro. O escuro aparece
-      sozinho quando o celular/computador do visitante está no modo escuro.
-      Para ter só o tema claro, apague os dois blocos marcados como "TEMA ESCURO".
-   3) Cores estão em formato HEX (#rrggbb). No VS Code aparece um
-      quadradinho colorido ao lado: clique nele para escolher outra cor.
-   4) Medidas: "rem" é relativo ao tamanho da letra (1rem = 16px normalmente);
-      "px" é pixel fixo; "%" é proporcional.
-================================================================== */
-
-
-/* ===== CORES E FONTES (tema claro) ===== */
 :root{
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);      /* respeita o "notch" de celulares */
+  padding-top:env(safe-area-inset-top,0px);      
   padding-bottom:env(safe-area-inset-bottom,0px);
 
-  --bg:#fff6ee;        /* fundo da página */
-  --surface:#ffe9da;   /* fundo dos cartões e da caixa de contato */
-  --ink:#3b2d2b;       /* cor do texto principal */
-  --muted:#7a6258;     /* cor do texto secundário (descrições, menu) */
+  --bg:#fff6ee;        
+  --surface:#ffe9da;   
+  --ink:#3b2d2b;       
+  --muted:#7a6258;     
 
-  --accent:#a8563f;    /* cor de destaque: palavra em itálico, números, foco */
-  --btn:#b5593f;       /* fundo dos botões */
-  --btn-ink:#ffffff;   /* cor do texto dos botões */
+  --accent:#a8563f;    
+  --btn:#b5593f;       
+  --btn-ink:#ffffff;   
   --accent-ink:#ffffff;
-  --line:#f3dccd;      /* linhas e bordas finas */
-  --warm:#ffd9c7;      /* tom extra (reserva) */
-
-  /* FONTES: se trocar, mude também o link do Google Fonts no index.html */
-  --serif:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;  /* títulos */
-  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;   /* texto */
+  --line:#f3dccd;      
+  --warm:#ffd9c7;      
+  --serif:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;  
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;   
 }
 
-/* ===== TEMA ESCURO (automático conforme o aparelho do visitante) ===== */
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#7a5549; --surface:#6e554c; --ink:#fffaf5; --muted:#f3e1d6;
     --accent:#ffc8aa; --btn:#ffc8aa; --btn-ink:#3b2d2b; --accent-ink:#3b2d2b; --line:#85695c; --warm:#7d6358;
   }
 }
-/* TEMA ESCURO forçado (só vale se colocar data-theme="dark" na tag <html>) */
 :root[data-theme="dark"]{
   --bg:#5c453d; --surface:#6e554c; --ink:#fffaf5; --muted:#f3e1d6;
   --accent:#ffc8aa; --btn:#ffc8aa; --btn-ink:#3b2d2b; --accent-ink:#3b2d2b; --line:#85695c; --warm:#7d6358;
 }
 
-
-/* ===== BASE ===== */
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}  /* rolagem suave nos links do menu */
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}  
 *,*::before,*::after{box-sizing:inherit}
-/* Texto: 1rem = tamanho da letra, 1.7 = altura da linha */
 body{margin:0;background:var(--bg);min-height:100vh;color:var(--ink);font:400 1rem/1.7 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}  /* contorno ao navegar pelo teclado */
-
-/* Largura máxima do conteúdo (68rem). Aumente para a página ficar mais larga */
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}  
 .wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
 
-
-/* ===== TOPO / MENU ===== */
 header.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0}
 .brand{font:500 1.2rem var(--serif);text-decoration:none}
 nav a{margin-left:1.5rem;text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
 nav a:hover{color:var(--ink)}
 
-/* Títulos */
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;margin:0}
 
-
-/* ===== APRESENTAÇÃO (hero) ===== */
-/* grid-template-columns: texto (1.25) | foto (1). Mude os números para alterar a proporção */
 .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center;padding:3.5rem 0 5rem}
-/* clamp(mínimo, ideal, máximo): tamanho do título se adapta à tela */
+
 .hero h1{font-size:clamp(2.1rem,5vw,3.7rem);letter-spacing:-.02em;font-weight:400}
 .hero h1 em{font-style:italic;color:var(--accent)}
 .hero p.lead{font-size:1.2rem;color:var(--muted);max-width:34rem;margin:1.5rem 0 2rem}
 
-
-/* ===== BOTÕES ===== */
-/* border-radius:999px deixa o botão totalmente arredondado. Para botão mais "quadrado", use ex.: 12px */
 .btn{display:inline-block;background:var(--btn);color:var(--btn-ink);border:1.5px solid var(--btn);padding:.9rem 1.7rem;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}   /* sobe um pouquinho ao passar o mouse */
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);margin-left:.6rem}  /* botão só com contorno */
+.btn:hover{transform:translateY(-2px)}  
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);margin-left:.6rem} 
 
 
-/* ===== FOTO =====
-   aspect-ratio: proporção largura/altura da foto (911/1194 = foto atual).
-                 Se trocar por uma foto de outro tamanho, use o tamanho dela aqui.
-   border-radius: formato da moldura. Opções prontas:
-        formato orgânico (atual): 48% 52% 46% 54% / 38% 42% 58% 62%
-        retângulo arredondado:    28px
-        arco (topo redondo):      999px 999px 32px 32px
-        círculo:                  50%  (e use aspect-ratio:1/1)
-   object-position: parte da foto que fica visível se houver corte (50% 50% = centro).
-   ZOOM DA FOTO: transform:scale(1.4) aproxima a imagem (1 = sem zoom, 1.6 = mais perto).
-   transform-origin: ponto que fica fixo ao dar zoom (48% 30% = região do rosto).
-                     Aumente o segundo valor para o zoom descer em direção ao corpo. */
 .portrait{aspect-ratio:911/1194;border-radius:48% 52% 46% 54% / 38% 42% 58% 62%;background:var(--surface);display:grid;place-items:center;position:relative;overflow:hidden}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transform:scale(1.4);transform-origin:48% 30%}
 
-
-/* ===== SEÇÕES (espaçamento e linha de separação) ===== */
 section{padding:4.5rem 0;border-top:1px solid var(--line)}
 section h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:1.5rem;letter-spacing:-.01em}
 
-
-/* ===== SOBRE MIM ===== */
-.about{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem}   /* coluna de dados | coluna de texto */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem}   
 .about p{margin:0 0 1.1rem;max-width:40rem}
 .creds{list-style:none;padding:0;margin:1.5rem 0 0;color:var(--muted);font-size:.98rem}
 .creds li{padding:.55rem 0;border-bottom:1px solid var(--line)}
 
-
-/* ===== CARTÕES "COM O QUE POSSO AJUDAR" ===== */
-/* minmax(15rem,1fr): cada cartão tem no mínimo 15rem; as colunas se ajustam sozinhas */
 .areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
-/* border-radius com 4 valores: topo-esq, topo-dir, base-dir, base-esq */
 .area{background:var(--surface);padding:1.6rem;border-radius:20px 20px 20px 4px}
 .area h3{font-size:1.4rem;margin-bottom:.5rem}
 .area p{margin:0;color:var(--muted);font-size:.98rem}
 
-
-/* ===== COMO FUNCIONA (passos numerados) ===== */
 .steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:2rem;counter-reset:s}
 .steps li{counter-increment:s;padding-top:1rem;border-top:2px solid var(--accent)}
-.steps li::before{content:counter(s);font:italic 400 2rem var(--serif);color:var(--accent);display:block}  /* número automático */
+.steps li::before{content:counter(s);font:italic 400 2rem var(--serif);color:var(--accent);display:block}  
 .steps h3{font-size:1.25rem;margin:.3rem 0 .4rem}
 .steps p{margin:0;color:var(--muted);font-size:.98rem}
 
-
-/* ===== CONTATO ===== */
 .contact{background:var(--surface);border-radius:28px;padding:3rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
 .contact h2{margin-bottom:.8rem}
 .contact p{margin:0;color:var(--muted)}
@@ -141,23 +84,16 @@ section h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:1.5rem;letter-spac
 .info li{padding:.35rem 0}
 .info b{font-weight:600}
 
-
-/* ===== RODAPÉ ===== */
 footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
 
-
-/* ===== CELULAR (telas de até 46rem ≈ 736px) =====
-   Aqui ficam os ajustes para telas pequenas: menu escondido,
-   tudo em uma coluna e foto menor, que sobe para o topo. */
 @media(max-width:46rem){
   nav{display:none}
   .hero,.about,.contact{grid-template-columns:1fr}
   .hero{padding-top:1.5rem;gap:2rem}
-  .portrait{max-width:18rem;order:-1}      /* max-width: tamanho da foto no celular */
+  .portrait{max-width:18rem;order:-1}      
   .contact{padding:2rem 1.5rem}
   .btn.ghost{margin:.6rem 0 0}
   section{padding:3.25rem 0}
 }
 
-/* Para quem prefere menos animação no aparelho: desliga a rolagem suave e o "pulinho" dos botões */
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
